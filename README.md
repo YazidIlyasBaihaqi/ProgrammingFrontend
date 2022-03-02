@@ -1,4 +1,4 @@
 # ProgrammingFrontend Repository
-Yazid Ilyas Baihaqi
-TI03
-0110220012
+- Yazid Ilyas Baihaqi
+- TI03
+- 0110220012
