@@ -1,0 +1,38 @@
+.container {
+    margin: 1rem;
+    text-align: center;
+}
+
+.header {
+    font-size: 2.441rem;
+    color: #06d6a0;
+    margin: 0;
+}
+
+.description {
+    font-size: 1.563rem;
+    color: #118AB2;
+    margin: 0;
+}
+
+.component{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table, tr, th, td {
+    border: 1px solid #64748B
+}
+
+.table {
+    text-align: center;
+    border-collapse: collapse;
+    margin: 1rem;
+}
+
+.head {
+    padding: 1rem;
+    color: #06D6A0;
+}
+
