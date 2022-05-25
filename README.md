@@ -1,4 +1,1 @@
-Pemrograman Frontend
-- Yazid Ilyas Baihaqi
-- TI03
-- 0110220012
+Laptop saya GPU rusak, repo akan di push secepat mungkin maaf atas ketelatan dalam mengumpulkan tugas
