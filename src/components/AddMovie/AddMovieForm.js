@@ -2,7 +2,7 @@ import styles from "./AddMovieForm.module.css";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import Alert from "../Alert/Alert";
-import Button from "../ui/button";
+import Button from "../ui/Button";
 
 function AddMovie(props) {
   const { movies, setMovies } = props;
