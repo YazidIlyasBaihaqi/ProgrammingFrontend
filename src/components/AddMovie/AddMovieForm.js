@@ -3,9 +3,11 @@ import { useState } from "react";
 import { nanoid } from "nanoid";
 import Alert from "../Alert/Alert";
 import Button from "../ui/Button";
+import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
-function AddMovie(props) {
-  const { movies, setMovies } = props;
+function AddMovie() {
+  const dispatch = useDispatch()
 
   const [formData, setFormData] = useState({
     title: "",
@@ -57,6 +59,8 @@ function AddMovie(props) {
     }
   }
 
+  const navigation = useNavigate()
+
   function addMovie() {
     const movie = {
       id: nanoid(),
@@ -67,7 +71,8 @@ function AddMovie(props) {
     };
 
     // SOLVED: HOW TO ADD MOVIE TO MOVIES :)
-    setMovies([...movies, movie]);
+    dispatch(addMovie(movie))
+    navigation("/")
   }
 
   function handleSubmit(e) {

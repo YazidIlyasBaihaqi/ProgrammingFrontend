@@ -1,26 +1,38 @@
-/**
- * TODO 7.
- * Import fungsi formatUser, findByName, filterByMajor
- * dari file controllers/UserController.js
- */
-// CODE HERE
-import {formatUser, findByName, filterByMajor} from "./controllers/UserController"
+// Import Halaman Home
+import Home from "./pages/Home";
+import { Route, Routes } from "react-router-dom";
+import CreateMovie from "./pages/movie/Create";
+import PopularMovie from "./pages/movie/Popular";
+import NowPlayingMovie from "./pages/movie/NowPlaying";
+import TopRatedMovie from "./pages/movie/TopRated";
+import Layout from "./components/Layout";
+import { ThemeProvider } from "styled-components";
+import theme from "./components/utils/constants/theme";
+import GlobalStyle from "./components/GlobalStyle";
+import Detail from "./pages/movie/Detail";
+function App() {
+  /**
+   * Menampilkan Halaman Home.
+   * Tag div bisa diganti dengan tag <>.
+   * Tag <> adalah React fragment
+   */
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home/>}></Route>
+              <Route path="/movie/create" element={<CreateMovie/>} />
+              <Route path="/movie/popular" element={<PopularMovie />} />
+              <Route path="/movie/now" element={<NowPlayingMovie />} />
+              <Route path="/movie/top" element={<TopRatedMovie />} />
+              <Route path="/movie/:id" element={<Detail />} />
+            </Routes>
+          </Layout>
+      </ThemeProvider>
+    </>
+  );
+}
 
-/**
- * Fungsi Main.
- * Jangan edit atau hapus fungsi main.
- * Fungsi main untuk testing aplikasi.
- */
-(async () => {
-  console.log("# Format User: Mr/Mrs");
-  const resultFormatUsers = await formatUser("Mr/Mrs");
-  console.log(resultFormatUsers);
-
-  console.log("\n# Find User by Name: Aufa");
-  const resultFindByName = await findByName("Aufa");
-  console.log(resultFindByName);
-
-  console.log("\n# Filter User by Major: English");
-  const resultFilterByMajor = await filterByMajor("English");
-  console.log(resultFilterByMajor);
-})();
+export default App;

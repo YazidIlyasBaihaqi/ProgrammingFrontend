@@ -1,12 +1,15 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import Hero from "../../components/Hero/Hero";
 import Movies from "../../components/Movies/Movies";
 import ENDPOINTS from "../../components/utils/constants/endpoints";
+import { updateMovies } from "../../features/moviesSlice";
+import {useDispatch} from "react-redux";
 
 function PopularMovie() {
     //API Key
-    const [movies, setMovies] = useState([]);
+    const dispatch = useDispatch();
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         getPopularMovies();
@@ -14,24 +17,14 @@ function PopularMovie() {
     }, []);
 
     async function getPopularMovies() {
-        /**
-         * Menggunakan library axios.
-         * Axios digunakan untuk melakukan fetch data.
-         */
         const response = await axios(ENDPOINTS.POPULAR);
-
-        /**
-         * Simpan data movies dari axios ke state movies.
-         * Upadte state menggunakan setMovies().
-         */
-        setMovies(response.data.results);
+        //jalankan action updateMovies
+        dispatch(updateMovies(response.data.results))
     }
-
-    console.log(movies);
     return (
         <>
             <Hero />
-            <Movies movies={movies} />
+            <Movies title="Popular Movies"/>
         </>
     )
 }

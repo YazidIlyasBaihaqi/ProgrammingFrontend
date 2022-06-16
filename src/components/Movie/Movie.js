@@ -1,5 +1,5 @@
-import StyledMovie from "./Movie.styled";
 import { Link } from "react-router-dom";
+import StyledMovie from "./Movie.styled";
 
 // Component Movie menerima props
 function Movie(props) {
