@@ -20,21 +20,21 @@
 }
 
 .hero__genre {
-  color: #64748B;
+  color: #64748b;
   margin-bottom: 1rem;
   font-size: 1.59rem;
 }
 
 .hero__description {
-  color: #64748B;
-  margin-bottom: 1rem;
+  color: #64748b;
+  margin-bottom: 1.563rem;
 }
 
 .hero__button {
   padding: 0.8rem 2rem;
   border: none;
   border-radius: 10px;
-  background-color: #06D6A0;
+  background-color: #06d6a0;
   color: #fff;
 }
 

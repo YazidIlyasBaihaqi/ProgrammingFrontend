@@ -1,9 +1,10 @@
 import ProvinceDesc from "../ProvincesDesc/Description";
 import Styles from "./Provinces.module.css";
+import { useSelector } from "react-redux"
 
-function Provinces(props) {
-  const { provinces, updateProvinces } = props;
-
+function Provinces() {
+  const { provinces } = useSelector((state) => state.provinces.provinces)
+  console.log(provinces)
   return (
     <div className={Styles.container}>
       <h2 className={Styles.header}>Provinsi Indonesia</h2>
@@ -17,9 +18,11 @@ function Provinces(props) {
             <th className={Styles.head}>Dirawat</th>
             <th className={Styles.head}>Meninggal</th>
           </tr>
-          {provinces.map((provinces) => {
-            return <ProvinceDesc provinces={provinces} />;
-          })}
+          <tbody>
+            {provinces.map((provinces) => {
+              return <ProvinceDesc provinces={provinces} />;
+            })}
+          </tbody>
         </table>
       </div>
     </div>

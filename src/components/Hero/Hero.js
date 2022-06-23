@@ -9,11 +9,11 @@ function Hero() {
           <h3 className={styles.hero__genre}>
             Monitoring Perkembangan Covid
           </h3>
-          <p className={styles.hero__description}>
+          <h4 className={styles.hero__description}>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam
             cum accusamus quisquam earum velit ea nobis maiores exercitationem
             nam temporibus.
-          </p>
+          </h4>
           <button className={styles.hero__button}>Vaccine</button>
         </div>
         <div className="hero__right">

@@ -1,22 +1,20 @@
-import styles from "./Navbar.module.css";
+import { StyledNavbar, StyledLink } from "./Navbar.styled";
 
 function Navbar() {
   return (
-    <div className={styles.container}>
-      <nav className={styles.navbar}>
+    <StyledNavbar>
+      <nav>
         <div>
-          <h1 className={styles.navbar__brand}>Covid App Final Project</h1>
+          <h1>Covid App Final Project</h1>
         </div>
-        <div>
-          <ul className={styles.navbar__list}>
-            <li className={styles.navbar__item}>Global</li>
-            <li className={styles.navbar__item}>Indonesia</li>
-            <li className={styles.navbar__item}>Provinsi</li>
-            <li className={styles.navbar__item}>About</li>
-          </ul>
-        </div>
+        <ul>
+          <li><StyledLink to="/">Global</StyledLink></li>
+          <li><StyledLink to="/covid/indonesia">Indonesia</StyledLink></li>
+          <li><StyledLink to="/covid/provinsi">Provinsi</StyledLink></li>
+          <li><StyledLink to="">About</StyledLink></li>
+        </ul>
       </nav>
-    </div>
+    </StyledNavbar>
   );
 }
 

@@ -1,10 +1,16 @@
 import Styles from "./Form.module.css";
 import { useState } from "react";
 import Alert from "../Alert/Alert.js";
+import { useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom";
+import { updateProvince } from "../../Features/ProvincesSlices";
 
-function Form(props) {
-  const { provinces, updateProvinces } = props;
+function Form() {
+  const { provinces } = useSelector((state) => state.provinces.provinces)
 
+  const dispatch = useDispatch();
+  const navigation = useNavigate()
   const [provinsi, setprovinsi] = useState("");
   const [jumlah, setJumlah] = useState("");
   const [update, setUpdate] = useState("");
@@ -13,7 +19,7 @@ function Form(props) {
   const [isUpdateError, setIsUpdateError] = useState(false);
   const [isJumlahError, setIsJumlahError] = useState(false);
 
-  function handleprovinsi(e) {
+  function handleProvinsi(e) {
     setprovinsi(e.target.value);
   }
 
@@ -35,16 +41,17 @@ function Form(props) {
     } else if (jumlah === "") {
       setIsJumlahError(true);
     } else {
-      let province = {
+      console.log(provinsi);
+      const province = {
         kota: provinsi,
-        kasus: 0,
-        sembuh: 0,
-        meninggal: 0,
-        dirawat: 0,
+        kasus: update === "kasus" ? jumlah : provinces.find(e => e.kota === provinsi).kasus,
+        sembuh: update === "sembuh" ? jumlah : provinces.find(e => e.kota === provinsi).sembuh,
+        dirawat: update === "dirawat" ? jumlah : provinces.find(e => e.kota === provinsi).dirawat,
+        meninggal: update === "meninggal" ? jumlah : provinces.find(e => e.kota === provinsi).meninggal,
       };
-      province[update] = jumlah;
+      dispatch(updateProvince(province))
+      navigation("/covid/provinsi")
 
-      updateProvinces([...provinces, province]);
       setIsprovinsiEror(false);
       setIsUpdateError(false);
       setIsJumlahError(false);
@@ -64,7 +71,10 @@ function Form(props) {
         <form className={Styles.input} action="" onSubmit={handleSubmit}>
           <h2 className={Styles.head}>Form Covid</h2>
           <label className={Styles.label}>Provinsi</label>
-          <select className={Styles.form_input} onChange={handleprovinsi}>
+          <select className={Styles.form_input} onChange={handleProvinsi}>
+            <option value='value' disabled selected>
+              Pilih Kota
+            </option>
             {provinces.map((province) => {
               return <option value={province.kota}>{province.kota}</option>;
             })}
@@ -72,10 +82,13 @@ function Form(props) {
           {isprovinsiError && <Alert>Provinsi Wajib Diisi</Alert>}
           <label className={Styles.label}>Status</label>
           <select className={Styles.form_input} onChange={handleUpdate}>
-            <option value="kasus">Kasus</option>
-            <option value="sembuh">Sembuh</option>
-            <option value="meninggal">Meninggal</option>
-            <option value="dirawat">Dirawat</option>
+            <option value="value" disabled selected>
+              Pilih kasus
+            </option>
+            <option value="kasus">kasus</option>
+            <option value="sembuh">sembuh</option>
+            <option value="meninggal">meninggal</option>
+            <option value="dirawat">dirawat</option>
           </select>
           {isUpdateError && <Alert>Status Wajib Diisi</Alert>}
           <label className={Styles.label}>Jumlah</label>

@@ -6,7 +6,7 @@ function Description(props) {
   return (
     <div className={Style.container}>
       <h2 className={Style.status}>{data.status}</h2>
-      <h1 className={Style.total}>{data.total}</h1>
+      <h1 className={Style.total}>{data.value}</h1>
     </div>
   );
 }

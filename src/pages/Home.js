@@ -1,33 +1,38 @@
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import Hero from "../components/Hero/Hero";
-import Global from "../components/Global/Global";
-import Data from "../utils/constants/indonesia";
 import { useState } from "react";
-import Provinces from "../components/Provinces/Provinces";
-import ProvData from "../utils/constants/provinces"
-import Form from "../components/Form/Form"
-
-function Main() {
-  const global = Data.indonesia;
-  const [provinces, setProvinces] = useState(ProvData.provinces);
-
-  return (
-    <main>
-      <Hero />
-      <Global data={global}/>
-      <Provinces provinces={provinces} updateProvinces={setProvinces}/>
-      <Form provinces={provinces} updateProvinces={setProvinces}/>
-    </main>
-  );
-}
+import DataLabel from "../components/DataLabel/DataLabel";
+import { useEffect } from "react";
+import axios from "axios";
+import ENDPOINTS from "../components/utils/constants/endpoint";
+import Summary from "../components/Summary";
 
 function Home() {
+  const [global, setGlobal] = useState([]);
+  useEffect(() => {
+    getGlobal();
+  }, [])
+
+  async function getGlobal() {
+    const response = await axios(ENDPOINTS.GLOBAL);
+    const covidData = [{
+      status: "Confirmed",
+      ...response.data.confirmed
+    }, {
+      status: "Deaths",
+      ...response.data.deaths
+    }, {
+      status: "Recovered",
+      ...response.data.recovered
+    }]
+
+    setGlobal(covidData)
+  }
+
   return (
     <>
-      <Navbar />
-      <Main />
-      <Footer />
+      <Hero />
+      <DataLabel data={global} title="Global" />
+      <Summary img={ENDPOINTS.IMG} title="Global" />
     </>
   );
 }
