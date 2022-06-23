@@ -32,6 +32,18 @@ export const StyledNavbar = styled.div`
     text-decoration: none;
     color: #fff;
   }
+
+  @media (max-width: 768px) {
+    ul{
+      flex-direction: row;
+      justify-content: space-evenly;
+      margin: 1rem auto;
+    }
+    li {
+      margin: 1rem;
+    }
+  }
+
   @media (min-width: 768px) {
     nav {
       flex-direction: row;

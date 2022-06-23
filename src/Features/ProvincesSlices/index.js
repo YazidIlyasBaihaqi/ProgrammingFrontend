@@ -12,20 +12,8 @@ const provincesSlice = createSlice({
       state.provinces.push(action.payload);
     },
     updateProvince(state, action) {
-      // const index = data.provinces.findIndex(province => province.kota === action.payload.kota)
-      // const newArray = data.provinces;
-      // const a = state.provinces.provinces
-      // console.log(a)
-      // newArray[index] = action.payload
-      // let updated = {
-      //   last_update: "2022-06-22",
-      //   total_province: 34,
-      //   provinces: newArray
-      // }
-      // console.log(updated)
-      // state.provinces = updated.provinces;
-
-
+      const index = state.provinces.provinces.findIndex(e => e.kota === action.payload.kota)
+      state.provinces.provinces[index] = action.payload
     }
   },
 });

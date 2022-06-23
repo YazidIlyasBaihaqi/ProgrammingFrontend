@@ -1,3 +1,4 @@
+import { StyledLink } from "../Navbar/Navbar.styled";
 import styles from "./Footer.module.css";
 
 function Footer() {
@@ -10,10 +11,10 @@ function Footer() {
         </div>
         <div>
           <ul className={styles.navbar__list}>
-            <li className={styles.navbar__item}>Global</li>
-            <li className={styles.navbar__item}>Indonesia</li>
-            <li className={styles.navbar__item}>Provinsi</li>
-            <li className={styles.navbar__item}>About</li>
+            <li className={styles.navbar__item}><StyledLink to="/">Global</StyledLink></li>
+            <li className={styles.navbar__item}><StyledLink to="/covid/indonesia">Indonesia</StyledLink></li>
+            <li className={styles.navbar__item}><StyledLink to="/covid/provinsi">Provinsi</StyledLink></li>
+            <li className={styles.navbar__item}><StyledLink to="">About</StyledLink></li>
           </ul>
         </div>
       </nav>

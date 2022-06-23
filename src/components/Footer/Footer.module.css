@@ -13,7 +13,7 @@
 
 .by {
   font-size: 1.563rem;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 0;
 }
 
@@ -37,8 +37,17 @@
 .navbar__item {
   margin-bottom: 1rem;
 }
+@media (max-width: 768px) {
+  .navbar__list {
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 1rem auto;
+  }
+  .navbar__item {
+    margin: 1rem;
+  }
+}
 
-/* Medium Screen */
 @media (min-width: 768px) {
   .navbar {
     flex-direction: row;
@@ -61,7 +70,7 @@
 
 /* Large Screen */
 @media (max-width: 768px) {
-  .copyright{
+  .copyright {
     text-align: center;
   }
 }
